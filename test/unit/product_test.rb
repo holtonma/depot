@@ -40,7 +40,7 @@ class ProductTest < ActiveSupport::TestCase
     assert product.errors.on(:price)
 
     product.price = nil
-    assert !product.valid?
+    assert ! product.valid?
     assert product.errors.on(:price)
 
     product.price = 1

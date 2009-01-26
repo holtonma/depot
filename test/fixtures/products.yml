@@ -1,11 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
-  description: MyText
-  image_url: MyString
-
+  title: Golf My Way
+  description: by Jack Nicklaus
+  image_url: http://golfap.com/books
+  price: 2324
+  
 two:
-  title: MyString
-  description: MyText
-  image_url: MyString
+  title: The Rails Way
+  description: Obie Fernandez' tale of woe
+  image_url: http://railsway.com/book
+  price: 4356
