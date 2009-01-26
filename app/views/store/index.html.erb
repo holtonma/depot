@@ -1,0 +1,14 @@
+<h1>Golfap Books Catalog</h1>
+
+<p>Find me in app/views/store/index.html.erb</p>
+
+<% for product in @products -%>
+	<div class="entry">
+		<%= image_tag(product.image_url) %>
+		<h3><%= h(product.title) %></h3>
+		<%= product.description %>
+		<div class="price-line">
+			<span class="price"><%= product.price %></span>
+		</div>
+	</div>
+<% end %>

@@ -1,3 +1,10 @@
 class Product < ActiveRecord::Base
-  validates_presence_of :title
+  
+  def self.find_products_for_sale
+    Product.find(:all, :order => "title")
+  end
+  
+  validates_presence_of :title #:price?
+  
+  
 end
