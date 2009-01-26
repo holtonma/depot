@@ -1,0 +1,62 @@
+/* Styles for main page */ 
+body		{ font-family: verdana; }
+#banner 	{ 
+			  background: #EEEEEE; padding-top: 10px; padding-bottom: 10px; border-bottom:2px solid; 
+			  font: small-caps 40px/40px "Times New Roman", serif; color: #003300; text-align: center; 
+			  font-family: verdana; font-size:xx-large; font-weight:bold; 
+			} 
+#banner img { float: left; } 
+#columns 	{ background: #141; } 
+#main 		{ 
+				margin-left: 13em; padding-top: 4ex; padding-left: 2em; background: white; 
+				
+			} 
+#side 		{ float: left; padding-top: 1em; padding-left: 1em; padding-bottom: 1em; width: 12em; background: #004400; } 
+#side a 	{ color: #DDD; font-size: small; }
+#side ul	{ list-style:none;}
+h1			{ font: 150% sans-serif; color: #226; border-bottom: 3px dotted #77d;}
+
+/* An entry in the store catalog */
+
+#store  .entry {
+  overflow: auto;
+  margin-top: 1em;
+  border-bottom: 1px dotted #77d;
+}
+
+#store  .title {
+  font-size: 120%;
+  font-family: sans-serif;
+}
+
+#store .entry img {
+  width: 75px;
+  float: left;
+}
+
+
+#store .entry h3 {
+ margin-top: 0;
+ margin-bottom: 2px;
+ color: #227;
+}
+
+#store .entry p {
+ margin-top: 0.5em; 
+ margin-bottom: 0.8em; 
+}
+
+#store .entry .price-line {
+ clear: both;
+}
+
+#store .entry .add-to-cart {
+  position: relative;
+}
+
+#store .entry  .price {
+  color: #44a;
+  font-weight: bold;
+  margin-right: 2em;
+}
+

@@ -1,17 +1,19 @@
 <h1>Listing products</h1>
 
-<table>
+<table border="0px;" style="background-color:#CCC;">
   <tr>
     <th>Title</th>
+		<th>Price (US$)</th>
     <th>Description</th>
     <th>Image url</th>
   </tr>
 
 <% for product in @products %>
   <tr>
-    <td><%=h product.title %></td>
-    <td><%=h product.description %></td>
-    <td><%=h product.image_url %></td>
+    <td style="background-color:#EEE;"><%=h product.title %></td>
+		<td align="right" style="background-color:#EEE;padding:3px;"><%=h pennies_to_dollars(product.price) %></td>
+    <td align="left" style="background-color:#EEE;padding:3px;"><%=h product.description %></td>
+    <td align="left" style="background-color:#EEE;padding:3px;"><%=h product.image_url %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Edit', edit_product_path(product) %></td>
     <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>

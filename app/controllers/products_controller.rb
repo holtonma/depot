@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+      
   # GET /products
   # GET /products.xml
   def index
@@ -35,13 +36,15 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    #@product.price = @product.price / 100.00 #format into dollars
+    #@product
   end
 
   # POST /products
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
-
+    
     respond_to do |format|
       if @product.save
         flash[:notice] = 'Product was successfully created.'
@@ -58,10 +61,10 @@ class ProductsController < ApplicationController
   # PUT /products/1.xml
   def update
     @product = Product.find(params[:id])
-
+    
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        flash[:notice] = 'Product was successfully updated.'
+        flash[:notice] = "Product was successfully updated."
         format.html { redirect_to(@product) }
         format.xml  { head :ok }
       else
@@ -82,4 +85,6 @@ class ProductsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+
 end

@@ -4,14 +4,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Products: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
+  <title>Golfap Books Online Store</title>
+  <%= stylesheet_link_tag 'depot', :media => "all" %>
 </head>
-<body>
-
-<p style="color: green"><%= flash[:notice] %></p>
-
-<%= yield  %>
-
+<body id="store">
+	<div id="banner">
+		<%= image_tag("logo.png") %>
+		<%= @page_title || "Golfap.com Bookshelf" %>
+	</div>
+	<div id="columns">
+		<div id="side">
+			<ul>
+				<li><a href="/store">Home</a></li> <%# @root_url %>
+				<li><a href="/questions">Questions</a></li>
+				<li><a href="/news">News</a></li>
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<p style="color:#006600;"><%= flash[:notice] %></p>
+  <div id="main">
+		<%= yield :layout %>
+	</div>
 </body>
 </html>

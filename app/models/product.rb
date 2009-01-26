@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
     Product.find(:all, :order => "title")
   end
   
-  validates_presence_of :title #:price?
+  validates_presence_of :title, :price #:price?
   
   
 end
