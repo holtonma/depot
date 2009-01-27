@@ -17,7 +17,8 @@
   </p>
   <p>
     <%= f.label :price %> in pennies (E.g.: 34.99 enter '3499')<br />
-    <%= f.text_field :price %> <span id="in_dollars">: previous price (US$): <%= pennies_to_dollars(@product.price) %> </span>
+    <%= f.text_field :price %> <span id="in_dollars">: previous price (US$): 
+		<%= pennies_to_dollars(@product.price) if @product.price != nil%> </span>
   </p>
   <p>
     <%= f.submit "Update" %>

@@ -4,7 +4,9 @@ class ProductsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
+    assert_not_nil assigns(:products).size 
     assert_not_nil assigns(:products)
+    assert_template "index"
   end
 
   test "should get new" do
@@ -35,6 +37,81 @@ class ProductsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to product_path(assigns(:product))
+  end
+  
+  test "should spit out error messages on screen because of a missing title" do
+    post :create, :product => {
+      :title        => '',
+      :description  => 'golfap rules the tubes',
+      :image_url    => 'http://example.com/foo.gif',
+      :price        => '1000'
+    }
+    assert_template "new"
+    assert_tag :tag => "div", :attributes => { :id => "errorExplanation" }
+    assert_tag :tag => "div", :attributes => { :class => "fieldWithErrors"}
+    assert_select "div[class*=fieldWithErrors]", :count => 2
+    assert_select "div[class*=errorExplanation]", :count => 1
+    # check explicitly that both the input is blank for Title and it is a fieldWithErrors
+    assert_select "div.fieldWithErrors" do 
+      assert_select "input:last-of-type", ""
+    end
+    # check explicitly that both the input#product_price errs out and is blank
+    assert_equal 1, css_select("div.fieldWithErrors > input#product_title").size 
+    assert_select "div.fieldWithErrors > input#product_title", :text => ""
+  end
+  
+  test "should spit out error messages on screen because of a missing price" do
+    post :create, :product => {
+      :title        => 'A Long Walk Spoiled',
+      :description  => 'golfap rules the tubes',
+      :image_url    => 'http://example.com/foo.gif',
+      :price        => ''
+    }
+    assert_template "new"
+    assert_tag :tag => "div", :attributes => { :id => "errorExplanation" }
+    assert_tag :tag => "div", :attributes => { :class => "fieldWithErrors"}
+    assert_select "div[class*=fieldWithErrors]", :count => 2
+    assert_select "div[class*=errorExplanation]", :count => 1
+    assert_select "div.fieldWithErrors" do 
+      assert_select "input:last-of-type", ""
+    end
+    # check explicitly that both the input#product_price errs out and is blank
+    assert_equal 1, css_select("div.fieldWithErrors > input#product_price").size 
+    assert_select "div.fieldWithErrors > input#product_price", :text => ""
+  end
+  
+  test "should spit out error messages on screen because of a missing description" do
+    post :create, :product => {
+      :title        => 'A Long Walk Spoiled',
+      :description  => '',
+      :image_url    => 'http://example.com/foo.gif',
+      :price        => '2345'
+    }
+    assert_template "new"
+    assert_tag :tag => "div", :attributes => { :id => "errorExplanation" }
+    assert_tag :tag => "div", :attributes => { :class => "fieldWithErrors"}
+    assert_select "div[class*=fieldWithErrors]", :count => 2
+    assert_select "div[class*=errorExplanation]", :count => 1
+    # check explicitly that both the input#product_price errs out and is blank
+    assert_equal 1, css_select("div.fieldWithErrors > textarea#product_description").size 
+    assert_select "div.fieldWithErrors > textarea#product_description", :text => ""
+  end
+  
+  test "should spit out error messages on screen because of a missing image_url" do
+    post :create, :product => {
+      :title        => 'A Long Walk Spoiled',
+      :description  => 'golfap rules the tubes',
+      :image_url    => '',
+      :price        => '2345'
+    }
+    assert_template "new"
+    assert_tag :tag => "div", :attributes => { :id => "errorExplanation" }
+    assert_tag :tag => "div", :attributes => { :class => "fieldWithErrors"}
+    assert_select "div[class*=fieldWithErrors]", :count => 2
+    assert_select "div[class*=errorExplanation]", :count => 1
+    # check explicitly that both the input#product_price errs out and is blank
+    assert_equal 1, css_select("div.fieldWithErrors > input#product_image_url").size 
+    assert_select "div.fieldWithErrors > input#product_image_url", :text => ""
   end
 
   test "should show product" do
