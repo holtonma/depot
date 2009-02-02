@@ -3,6 +3,7 @@
 <% for product in @products -%>
 	<div class="entry">
 		<%= image_tag(product.image_url) %>
+		<h3>Did Aaron quit his job: <%= did_you_quit_your_job?('Aaron') %></h3>
 		<h3><%= h(product.title) %></h3>
 		<%= product.description %>
 		<div class="price-line">

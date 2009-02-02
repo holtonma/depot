@@ -1,7 +1,7 @@
 /* Styles for main page */ 
 body		{ font-family: verdana; }
 #banner 	{ 
-			  background: #EEEEEE; padding-top: 10px; padding-bottom: 10px; border-bottom:2px solid; 
+			  background: #FFF; padding-top: 10px; padding-bottom: 10px; border-bottom:2px solid; 
 			  font: small-caps 40px/40px "Times New Roman", serif; color: #003300; text-align: center; 
 			  font-family: verdana; font-size:xx-large; font-weight:bold; 
 			} 
@@ -59,4 +59,5 @@ h1			{ font: 150% sans-serif; color: #226; border-bottom: 3px dotted #77d;}
   font-weight: bold;
   margin-right: 2em;
 }
+
 
