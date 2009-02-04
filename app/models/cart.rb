@@ -14,7 +14,7 @@ class Cart
       @items << Item.new(product)
     end
     
-    @items << product
+    #@items << product
   end
   
 end

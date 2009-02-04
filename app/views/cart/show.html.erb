@@ -2,8 +2,9 @@
 <h2>Your Golfap Cart</h2>
 
 <ul>
-	<% for item in @cart.items %>
-		<li><%= @cart.items.length %></li>
-		<li><%= item.price %> &times; <%=h item.title %></li>
-	<% end %>
+	<ul>
+		<% for item in @cart.items %>
+			<li><%= item.quantity %> &times; <%=h item.title %></li>
+		<% end %>
+	</ul>
 </ul>
