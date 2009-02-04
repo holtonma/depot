@@ -60,4 +60,9 @@ h1			{ font: 150% sans-serif; color: #226; border-bottom: 3px dotted #77d;}
   margin-right: 2em;
 }
 
+#store .entry form, #store .entry form div { 
+display: inline; 
+} 
+
+
 

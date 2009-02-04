@@ -3,6 +3,7 @@ class StoreController < ApplicationController
   def index
     find_cart
     @products = Product.find_products_for_sale
+    @cart_id = 1 # for now, no users
   end
   
   def add_to_cart
