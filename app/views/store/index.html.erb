@@ -9,11 +9,8 @@
 		<div class="price-line">
 			<span class="price"><%= pennies_to_dollars(product.price) %></span>
 			<span>
-				<%= button_to "Add to Cart", :action => 'create', :controller => 'items', :cart_id => @cart_id, 
-				    :id => product.id  %>
-				
-				<%# button_to "Add to Cart", :controller => 'items', :action => 'new_cart_item', :id => product, :cart_id => 1  %> 
-				<!--, :action => 'new', :controller => 'items', :id => product %> -->
+				<%= button_to "Add to Cart", :action => 'create', :controller => 'items', 
+						:cart_id => @cart_id, :id => product.id  %>
 			</span>
 		</div>
 	</div>
