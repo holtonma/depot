@@ -1,3 +1,6 @@
+#require 'store_util.rb'
+include StoreUtil
+
 class CartController < ApplicationController
   
   def new
@@ -6,7 +9,7 @@ class CartController < ApplicationController
 
   def show
     # cart()  ... get /cart/:id  # grab and display contents of the cart
-    @cart = find_cart
+    @cart = StoreUtil.find_cart(session[:cart]) 
   end
   
   # removing this non-RESTful noise
@@ -17,9 +20,6 @@ class CartController < ApplicationController
   #   @cart.add_product(product)
   # end
   
-  private
-    def find_cart
-      session[:cart] ||= Cart.new
-    end
+
   
 end

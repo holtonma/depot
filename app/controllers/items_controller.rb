@@ -1,3 +1,6 @@
+#require 'store_util.rb'
+include StoreUtil
+
 class ItemsController < ApplicationController
   
   def new
@@ -7,7 +10,7 @@ class ItemsController < ApplicationController
   def create
     # add item(product) to cart
     product = Product.find(params[:id])
-    @cart = find_cart
+    @cart = StoreUtil.find_cart(session[:cart]) 
     @cart.add_product(product)
     
     redirect_to url_for :controller => 'cart', :action => 'show', :id => params[:cart_id]
@@ -18,10 +21,5 @@ class ItemsController < ApplicationController
   
   def update
   end
-  
-  private
-    def find_cart
-      session[:cart] ||= Cart.new
-    end
   
 end
