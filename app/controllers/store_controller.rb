@@ -1,21 +1,17 @@
+include StoreUtil
+
 class StoreController < ApplicationController
   
   def index
-    find_cart
+    StoreUtil.find_cart(session[:cart])
     @products = Product.find_products_for_sale
     @cart_id = 1 # for now, no users
   end
   
   def add_to_cart
-    @cart = find_cart
+    @cart = StoreUtil.find_cart(session[:cart]) 
     product = Product.find(params[:id])
     @cart.add_product(product)
-    #@cart << product  #from alias :<< :add_product in cart model
   end
-  
-  private
-    def find_cart
-      session[:cart] ||= Cart.new
-    end
 
 end

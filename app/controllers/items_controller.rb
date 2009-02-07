@@ -1,4 +1,3 @@
-#require 'store_util.rb'
 include StoreUtil
 
 class ItemsController < ApplicationController
