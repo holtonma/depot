@@ -23,8 +23,10 @@
 		</div>
 	</div>
 	
-	<p style="color:#006600;"><%= flash[:notice] %></p>
   <div id="main">
+	  <% if flash[:notice] -%>
+			<div id="notice"><%= flash[:notice] %></div>
+		<% end -%>
 		<%= yield :layout %>
 	</div>
 </body>

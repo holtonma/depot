@@ -64,5 +64,19 @@ h1			{ font: 150% sans-serif; color: #226; border-bottom: 3px dotted #77d;}
 display: inline; 
 } 
 
+#notice {
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}
+
+.cart-title { font: 120% bold; }
+.item-price, .total-line { text-align: right; padding:3px;}
+.total-line .total-cell { font-weight: bold; border-top: 1px solid #595;}
+table.cart td, table.cart th { padding-right: 4px; border: 0px solid silver;}
+
+
 
 

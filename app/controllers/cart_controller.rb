@@ -2,7 +2,8 @@
 include StoreUtil
 
 class CartController < ApplicationController
-  
+  layout "store"
+   
   def new
     # new_cart() /cart/new # create a new cart
   end
@@ -12,14 +13,10 @@ class CartController < ApplicationController
     @cart = StoreUtil.find_cart(session[:cart]) 
   end
   
-  # removing this non-RESTful noise
-  # def add_product
-  #   # add items to cart here
-  #   @cart = find_cart
-  #   product = Product.find(params[:id])
-  #   @cart.add_product(product)
-  # end
-  
-
+  def destroy
+    session[:cart] = nil
+    flash[:notice] = "Your cart is currently empty"
+    redirect_to :action => 'show'
+  end
   
 end

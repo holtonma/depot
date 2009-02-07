@@ -1,10 +1,39 @@
 
-<h2>Your Golfap Cart</h2>
+<h2>Your Golfap Books Cart</h2>
 
-<ul>
-	<ul>
-		<% for item in @cart.items %>
-			<li><%= item.quantity %> &times; <%=h item.title %></li>
-		<% end %>
-	</ul>
-</ul>
+<div class="cart-title"></div>
+
+<table class="cart">
+	<tr>
+		<th>Qty.</th>
+		<th>Title</th>
+		<th>Price (US$)</th>
+	</tr>
+	<% for item in @cart.items %>
+		<tr>
+			<td><%= item.quantity %> &times;</td>
+			<td><%=h item.title %></td>
+			<td class="item-price"><%= pennies_to_dollars(item.price) %></td>
+		</tr>
+	<% end %>
+	
+	<% if (@cart.items.length != 0) %>	
+	  <tr class="total-line">
+			<td colspan="2">Total</td>
+			<td class="total-cell"><%= pennies_to_dollars(@cart.total_price) %></td>
+		</tr>
+		<tr>
+			<td colspan="3" align="left">
+				<%= button_to 'Empty Cart', { :action => 'destroy', :id => params[:id] }, 
+											:confirm => "Are you sure you wish to remove your cart?", :method => :delete %>
+			</td>
+	<% else %>
+		<tr>
+			<td colspan="3">Your cart contains no items.  Continue shopping at <%= link_to 'store', store_index_path %>.</td>
+		</tr>
+	<% end %>
+	
+</table>
+
+  
+
