@@ -7,12 +7,12 @@ class StoreController < ApplicationController
     @cart_id = 1 # for now, no users
   end
   
-  def add_to_cart
-    # moved to items_controller#create
-    # @cart = find_cart 
-    # product = Product.find(params[:id])
-    # @cart.add_product(product)
-  end
+  # moved to items_controller#create
+  # def add_to_cart
+  #   # @cart = find_cart 
+  #   # product = Product.find(params[:id])
+  #   # @cart.add_product(product)
+  # end
   
   private
     def find_cart

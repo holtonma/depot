@@ -27,6 +27,4 @@ class CartTest < ActiveSupport::TestCase
     assert 9004, cart.total_price
   end
   
-  
-  
 end

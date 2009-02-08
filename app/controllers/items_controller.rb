@@ -1,11 +1,7 @@
 include StoreUtil
 
 class ItemsController < ApplicationController
-  
-  def new
-    #new_cart_item()
-  end
-  
+    
   def create
     # add item(product) to cart
     product = Product.find(params[:id])
@@ -16,9 +12,8 @@ class ItemsController < ApplicationController
   end
   
   def index
-  end
-  
-  def update
+    #alias for cart#show ?
+    #redirect_to :action => 'show', :controller => 'cart'
   end
   
 end
