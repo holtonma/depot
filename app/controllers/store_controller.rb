@@ -1,4 +1,3 @@
-include StoreUtil
 
 class StoreController < ApplicationController
   
