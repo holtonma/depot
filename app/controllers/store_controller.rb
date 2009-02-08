@@ -8,9 +8,10 @@ class StoreController < ApplicationController
   end
   
   def add_to_cart
-    @cart = find_cart 
-    product = Product.find(params[:id])
-    @cart.add_product(product)
+    # moved to items_controller#create
+    # @cart = find_cart 
+    # product = Product.find(params[:id])
+    # @cart.add_product(product)
   end
   
   private
@@ -18,5 +19,4 @@ class StoreController < ApplicationController
       session[:cart] ||= Cart.new
     end
     
-
 end
