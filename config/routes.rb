@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :sessions
   map.resources :users
+  map.resources :admin
   
   map.connect 'store/checkout', :controller => 'store', :action => 'checkout'
   map.connect 'store/save_order', :controller => 'store', :action => 'save_order'
