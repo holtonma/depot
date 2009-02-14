@@ -9,4 +9,5 @@ class LineItem < ActiveRecord::Base
     li.total_price = cart_item.price 
     li 
   end
+
 end

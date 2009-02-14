@@ -16,14 +16,6 @@ class OrdersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create order" do
-    assert_difference('Order.count') do
-      post :create, :order => { }
-    end
-
-    assert_redirected_to order_path(assigns(:order))
-  end
-
   test "should show order" do
     get :show, :id => orders(:one).id
     assert_response :success

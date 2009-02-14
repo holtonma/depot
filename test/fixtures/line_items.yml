@@ -4,10 +4,10 @@ one:
   product: one
   order: one
   quantity: 1
-  total_price: 4567
+  total_price: 45.67
   
 two:
   product: two
   order: two
-  quantity: 1
-  total_price: 1234
+  quantity: 6
+  total_price: 12.34
