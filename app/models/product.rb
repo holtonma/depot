@@ -1,5 +1,8 @@
 class Product < ActiveRecord::Base
   
+  #has_many :orders, :through => :line_items 
+  has_many :items
+  
   def self.find_products_for_sale
     Product.find(:all, :order => "title")
   end

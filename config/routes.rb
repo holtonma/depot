@@ -1,10 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :line_items
+
+  map.resources :orders
+
   map.resources :products
   map.resources :store
   map.resources :cart do |cart|
    cart.resources :items
   end
-  
+  map.resources :sessions
   
   # The priority is based upon order of creation: first created -> highest priority.
 

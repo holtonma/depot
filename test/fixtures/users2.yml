@@ -1,0 +1,4 @@
+one:
+  name: holtonma
+  hashed_password: <%= User.encrypted_password('daemon', 'golf!')%>
+  salt: golf!

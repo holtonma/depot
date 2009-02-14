@@ -3,6 +3,10 @@ require 'test_helper'
 class CartControllerTest < ActionController::TestCase
   fixtures :products
   
+  def setup
+    @item = products(:one)
+  end
+  
   test "the cart page should successfully display if given any id" do
     post :show, :id => 1
     assert :success
