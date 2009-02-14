@@ -38,5 +38,27 @@ class StoreControllerTest < ActionController::TestCase
       assert_tag :tag => "span", :attributes => { :class => "price" } 
     end
   end
+  
+  test "store/checkout should present checkout order form if cart has one item" do
+    @request.session[:cart] = Cart.new
+    @request.session[:cart].add_product(products(:one))
+    post :checkout
+    assert_response :success
+    assert_template "checkout"
+    assert_select 'input#order_name'
+    assert_select 'textarea#order_address'
+    assert_select 'input#order_email'
+    assert_select 'select#order_pay_type'
+    
+  end
+  
+  test "a valid checkout should create an order" do
+    #assert_difference('Order.count') do
+      post :save_order, :post => { :name => 'yoyoma', :address => 'foo bar lane', :email => "haiworld@foobar.com", :pay_type => "cc"}
+    #end
+    assert_response :ok
+    #assert_redirected_to '/store/save_order' #save_order_path(assigns(:post))
+    assert_equal 'Thank you for your order', flash[:notice]
+  end
     
 end

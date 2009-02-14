@@ -27,7 +27,6 @@ class CartControllerTest < ActionController::TestCase
   end
   
   test "the cart should show items and prices and quantities if there are items in the cart" do
-  
   end
   
   test "after emptying the cart, there should be no items left" do
@@ -39,6 +38,7 @@ class CartControllerTest < ActionController::TestCase
   test "adding a second copy of a book to the cart should double the price" do
   end
   
+  # reference:
   # def test_should_create_post
   #   assert_difference('Post.count') do
   #     post :create, :post => { :title => 'Hi', :body => 'This is my first post.'}
