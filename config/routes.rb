@@ -10,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :sessions
   
+  map.connect 'store/checkout', :controller => 'store', :action => 'checkout'
+  map.connect 'store/save_order', :controller => 'store', :action => 'save_order'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

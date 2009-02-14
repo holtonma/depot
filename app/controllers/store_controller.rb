@@ -23,6 +23,18 @@ class StoreController < ApplicationController
     end
   end
   
+  def save_order
+    @cart = find_cart
+    @order = Order.new(params[:order]) 
+    @order.add_line_items_from_cart(@cart) 
+    if @order.save                     
+      session[:cart] = nil
+      redirect_to_index("Thank you for your order")
+    else
+      render :action => 'checkout'
+    end
+  end
+  
   
   private
     def find_cart

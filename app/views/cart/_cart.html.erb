@@ -11,4 +11,4 @@
 <%= button_to 'Empty Cart', { :controller => :cart, :action => 'destroy', :id => 1}, 
 							:confirm => "Are you sure you wish to remove your cart?", :method => :delete %>
 <!-- #:id => params[:id] -->
-<%# button_to "Checkout", :action => 'checkout', :controller => 'store' %>
+<%= button_to "Checkout", :action => 'checkout', :controller => 'store' %>
