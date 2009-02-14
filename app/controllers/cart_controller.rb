@@ -13,5 +13,9 @@ class CartController < ApplicationController
     flash[:notice] = "Your cart is currently empty"
     redirect_to :controller => 'store', :action => 'index' #'show'
   end
+
+  protected
+    def authorize
+    end
   
 end

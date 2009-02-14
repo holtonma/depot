@@ -14,15 +14,31 @@
 	</div>
 	<div id="columns">
 		<div id="side">
-			<div id="cart"> 
-			  <%= render(:partial => "cart/cart", :object => @cart) %> 
-			</div>
+			<!-- <div id="cart"> -->
+			  <%# render(:partial => "cart/cart", :object => @cart) %> 
+			<!--</div> -->
+			<% if @cart %> 
+				<% hidden_div_if(@cart.items.empty?, :id => "cart") do %> 
+					<%= render(:partial => "cart/cart", :object => @cart) %> 
+				<% end %> 
+			<% end %>
 			<ul>
 				<li><a href="/store">Home</a></li> <%# @root_url %>
 				<li><a href="/questions">Questions</a></li>
 				<li><a href="/news">News</a></li>
 				<li><a href="/contact">Contact</a></li>
 			</ul>
+			
+			<% if session[:user_id] %>
+        <br />
+        <%= link_to 'Orders',   :controller => 'orders' %><br />
+        <%= link_to 'Products', :controller => 'products' %><br />
+        <%= link_to 'Users',    :controller => 'users'    %><br />
+        <br />
+
+        <%# link_to 'Logout', :controller => 'admin', :action => 'logout' %>
+      <% end %>
+			
 		</div>
 	</div>
 	
