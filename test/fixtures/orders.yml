@@ -1,13 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
-  address: MyText
-  email: MyString
-  pay_type: MyString
-
+  name: Holton
+  address: 335 Nora Ave
+  email: holtonma@gmail.com
+  pay_type: cc
+ 
 two:
-  name: MyString
-  address: MyText
-  email: MyString
-  pay_type: MyString
+  name: Dad
+  address: 1234 Glenview
+  email: bigwallh@gmail.com
+  pay_type: check
