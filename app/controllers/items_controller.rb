@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @cart = StoreUtil.find_cart(session[:cart]) 
     @cart.add_product(product)
     
-    redirect_to url_for :controller => 'cart', :action => 'show', :id => params[:cart_id]
+    redirect_to url_for :controller => 'store', :action => 'index' #, :id => params[:cart_id]
   end
   
   def index

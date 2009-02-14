@@ -18,8 +18,9 @@
 		</tr>
 		<tr>
 			<td colspan="3" align="left">
-				<%= button_to 'Empty Cart', { :action => 'destroy', :id => params[:id] }, 
+				<%= button_to 'Empty Cart', { :controller => 'cart', :action => 'destroy' }, 
 											:confirm => "Are you sure you wish to remove your cart?", :method => :delete %>
+											<!-- :id => params[:id] -->
 			</td>
 	<% else %>
 		<tr>

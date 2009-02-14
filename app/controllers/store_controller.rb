@@ -29,4 +29,9 @@ class StoreController < ApplicationController
       session[:cart] ||= Cart.new
     end
     
+    def redirect_to_index(msg = nil)
+      flash[:notice] = msg if msg
+      redirect_to :action => 'index'
+    end
+    
 end

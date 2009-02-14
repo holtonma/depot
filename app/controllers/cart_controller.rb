@@ -15,7 +15,7 @@ class CartController < ApplicationController
   def destroy
     session[:cart] = nil
     flash[:notice] = "Your cart is currently empty"
-    redirect_to :action => 'show'
+    redirect_to :controller => 'store', :action => 'index' #'show'
   end
   
 end
