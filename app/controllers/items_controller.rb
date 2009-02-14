@@ -15,5 +15,9 @@ class ItemsController < ApplicationController
     #alias for cart#show ?
     #redirect_to :action => 'show', :controller => 'cart'
   end
+
+  protected
+    def authorize
+    end
   
 end

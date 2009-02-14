@@ -1,19 +1,14 @@
 
 class StoreController < ApplicationController
+  before_filter :find_cart, :except => :empty_cart
   
   def index
-    find_cart
+    #find_cart
     @cart = find_cart 
     @products = Product.find_products_for_sale
     @cart_id = 1 # for now, no users
   end
   
-  # moved to items_controller#create
-  # def add_to_cart
-  #   # @cart = find_cart 
-  #   # product = Product.find(params[:id])
-  #   # @cart.add_product(product)
-  # end
   def checkout
     @cart = find_cart
     if @cart.items.empty?
@@ -46,4 +41,9 @@ class StoreController < ApplicationController
       redirect_to :action => 'index'
     end
     
+  protected
+    def authorize
+    end
+
+  
 end
