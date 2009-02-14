@@ -4,11 +4,12 @@ class CreateOrders < ActiveRecord::Migration
       t.string :name
       t.text :address
       t.string :email
-      t.string :pay_type
+      t.string :pay_type, :limit => 10
 
       t.timestamps
     end
   end
+
 
   def self.down
     drop_table :orders

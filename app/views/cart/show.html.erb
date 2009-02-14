@@ -9,13 +9,7 @@
 		<th>Title</th>
 		<th>Price (US$)</th>
 	</tr>
-	<% for item in @cart.items %>
-		<tr>
-			<td><%= item.quantity %> &times;</td>
-			<td><%=h item.title %></td>
-			<td class="item-price"><%= pennies_to_dollars(item.price) %></td>
-		</tr>
-	<% end %>
+	<%= render(:partial => "cart/cart_item", :collection => @cart.items) %>
 	
 	<% if (@cart.items.length != 0) %>	
 	  <tr class="total-line">

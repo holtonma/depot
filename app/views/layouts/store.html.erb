@@ -14,6 +14,9 @@
 	</div>
 	<div id="columns">
 		<div id="side">
+			<div id="cart"> 
+			  <%= render(:partial => "cart/cart", :object => @cart) %> 
+			</div>
 			<ul>
 				<li><a href="/store">Home</a></li> <%# @root_url %>
 				<li><a href="/questions">Questions</a></li>

@@ -1,0 +1,12 @@
+<div class="cart-title">Your Cart</div>
+<table>
+  <%= render(:partial => "cart/cart_item", :collection => cart.items) %>  
+  
+  <tr class="total-line">
+    <td colspan="2">Total</td>
+    <td class="total-cell"><%= pennies_to_dollars(cart.total_price) %></td>
+  </tr>
+</table>
+
+<%# button_to "Checkout", :action => 'checkout', :controller => 'store' %>
+<%# button_to "Empty cart", :action => :empty_cart %>
