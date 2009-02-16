@@ -124,4 +124,11 @@ class UsersControllerTest < ActionController::TestCase
  
     assert_redirected_to users_path
   end
+  
+  test "should direct to login when trying to go to users/index when not logged in" do
+    @request.session[:user_id] = nil #not logged in yet
+    get :index
+    assert_redirected_to '/login'
+  end
+  
 end

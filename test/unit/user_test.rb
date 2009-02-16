@@ -18,7 +18,5 @@ class UserTest < ActiveSupport::TestCase
 
     assert_equal 1, users.length
   end
-  
-  
-  
+    
 end

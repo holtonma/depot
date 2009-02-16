@@ -31,10 +31,11 @@
 			
 			<% if session[:user_id] %>
         <br />
-        <%= link_to 'Orders',   :controller => 'orders' %><br />
-        <%= link_to 'Products', :controller => 'products' %><br />
-        <%= link_to 'Users',    :controller => 'users'    %><br />
-        <br />
+				<ul id="admin_list">
+        	<li><%= link_to 'Orders',   :controller => 'orders' %></li>
+        	<li><%= link_to 'Products', :controller => 'products' %></li>
+        	<li><%= link_to 'Users',    :controller => 'users'    %></li>
+        </ul>
 
         <%# link_to 'Logout', :controller => 'admin', :action => 'logout' %>
       <% end %>
