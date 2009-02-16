@@ -70,6 +70,31 @@ class OrdersControllerTest < ActionController::TestCase
     assert_select "div#errorExplanation > ul > li", :text => "Pay type is not included in the list"
     assert_select "div#errorExplanation > ul > li", :text => "Address can't be blank"
     assert_select "div#errorExplanation > ul > li", :text => "Email can't be blank"
-    assert_select "div#errorExplanation > ul > li", :count => 5 #labels and input elements
+    assert_select "div#errorExplanation > ul > li", :count => 6
+  end
+  
+  test "should not create new order when email is invalid format" do
+    assert_no_difference('Order.count') do
+      post :create, :order => {
+        :name     => 'holtonomo',
+        :address  => 'foo bar lane',
+        :email    => 'asdf',
+        :pay_type => 'cc'
+      }
+    end
+    
+    assert_response :ok
+    assert_tag :tag => "div", :attributes => { :id => "errorExplanation" }
+    assert_tag :tag => "div", :attributes => { :class => "fieldWithErrors"}
+    assert_select "div[class*=fieldWithErrors]", :count => 2 #labels and input elements
+    assert_select "div[class*=errorExplanation]", :count => 1 
+    # check explicitly that both the input is blank for Title and it is a fieldWithErrors
+    assert_select "div.fieldWithErrors" do 
+      assert_select "input:last-of-type", ""
+    end
+    # check explicitly that both the input#product_price errs out and is blank
+    assert_equal 1, css_select("div.fieldWithErrors > input").size 
+    assert_select "div#errorExplanation > ul > li", :text => "Email is invalid"
+    assert_select "div#errorExplanation > ul > li", :count => 1 
   end
 end

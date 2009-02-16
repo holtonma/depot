@@ -10,7 +10,8 @@ class Order < ActiveRecord::Base
   
   validates_presence_of :name, :address, :email, :pay_type
   validates_inclusion_of :pay_type, :in => PAYMENT_TYPES.map {|disp, value| value}
-  # ...
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
+  
 
   def add_line_items_from_cart(cart)
     cart.items.each do |item|
