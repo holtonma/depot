@@ -72,7 +72,35 @@ class UsersControllerTest < ActionController::TestCase
     # check explicitly that both the input#product_price errs out and is blank
     assert_equal 1, css_select("div.fieldWithErrors > input#user_password").size 
     assert_select "div.fieldWithErrors > input#user_password", :text => ""
+    assert_select "div#errorExplanation > ul > li", :text => "Password doesn't match confirmation"
+    assert_select "div#errorExplanation > ul > li", :text => "Password Missing password"
+    assert_select "div#errorExplanation > ul > li", :count => 2
   end
+  
+  test "should not create user and show red boxes when password does not match password confirm" do
+    assert_no_difference('User.count') do
+      post :create, :user => {
+        :name                   => 'asdfasdfasdf',
+        :password               => 'onetwotree',
+        :password_confirmation  => 'onetwo',
+      }
+    end
+    
+    assert_response :ok
+    assert_tag :tag => "div", :attributes => { :id => "errorExplanation" }
+    assert_tag :tag => "div", :attributes => { :class => "fieldWithErrors"}
+    assert_select "div[class*=fieldWithErrors]", :count => 1
+    assert_select "div[class*=errorExplanation]", :count => 1
+    # check explicitly that both the input is blank for Title and it is a fieldWithErrors
+    assert_select "div.fieldWithErrors" do 
+      assert_select "input:last-of-type", ""
+    end
+    # check explicitly that both the input#product_price errs out and is blank
+    assert_equal 1, css_select("div.fieldWithErrors > input#user_password").size 
+    assert_select "div.fieldWithErrors > input#user_password", :text => ""
+    assert_select "div#errorExplanation > ul > li", :text => "Password doesn't match confirmation"
+  end
+  
   
   test "should show user" do
     get :show, :id => users(:one).id
