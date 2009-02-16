@@ -100,7 +100,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_select "div.fieldWithErrors > input#user_password", :text => ""
     assert_select "div#errorExplanation > ul > li", :text => "Password doesn't match confirmation"
   end
-  
+    
   
   test "should show user" do
     get :show, :id => users(:one).id
