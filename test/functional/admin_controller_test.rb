@@ -15,7 +15,12 @@ class AdminControllerTest < ActionController::TestCase
     assert_select "input[name=commit]", :count => 1
   end
   
-  test "the logout" do
+  test "the logout should wipe out the session" do
+    @request.session[:user_id] = users(:one).id
+    get :logout
+    assert :ok
+    assert_equal nil, @request.session[:user_id]
+    assert_redirected_to 'login'
   end
   
   test "index when a valid admin user is logged in" do
@@ -27,10 +32,11 @@ class AdminControllerTest < ActionController::TestCase
     #for a logged in user, the side bar should have links for Products, Users, Orders
     assert_select "div#side" do 
       assert_select "ul#admin_list" do
-        assert_select "a", :count => 3
+        assert_select "a", :count => 4
         assert_select "a", :text => 'Orders'
         assert_select "a", :text => 'Products'
         assert_select "a", :text => 'Users'
+        assert_select "a", :text => 'Logout'
       end
     end 
     

@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :admin
   map.connect 'login', :controller => 'admin', :action => 'login'
-  map.connect 'logout', :controller => 'admin', :action => 'login'
+  map.connect 'logout', :controller => 'admin', :action => 'logout'
   
   map.connect 'store/checkout', :controller => 'store', :action => 'checkout'
   map.connect 'store/save_order', :controller => 'store', :action => 'save_order'
