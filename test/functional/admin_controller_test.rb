@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class AdminControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  # Dear AdminController "the time for honoring yourself will soon be at an end" -Maximus
+  test "the login" do 
   end
+  
+  test "the logout" do
+  end
+  
+  test "index " do
+  end
+  
 end
