@@ -1,0 +1,25 @@
+es:
+  number:
+    currency:
+      format:
+        unit: "$US"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format: "%n&nbsp;%u"
+  layout: 
+    title: "Publicaciones de Golfap" 
+    side: 
+      home: "Inicio" 
+      questions: "Preguntas" 
+      news: "Noticias" 
+      contact: "Contacto"
+    main: 
+      title: "Cat&aacute;logo de Golfap" 
+      button: 
+      add: "A&ntilde;adir al Carrito"
+    cart:
+      title: "Carrito de la Compra"
+      button:
+        empty: "Vaciar Carrito"
+        checkout: "Comprar"
