@@ -4,7 +4,7 @@ one:
   product: one
   order: one
   quantity: 1
-  total_price: 45.67
+  total_price: 45.67 #"order_id", "updated_at", "total_price", "product_id", "quantity", "created_at"
   
 two:
   product: two
