@@ -167,6 +167,11 @@ margin-bottom: 10px;
   list-style: square;
 }
 
+.locale { 
+  float:right; 
+  padding-top: 0.2em 
+} 
+
 
 
 

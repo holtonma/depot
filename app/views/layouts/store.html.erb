@@ -9,8 +9,17 @@
 </head>
 <body id="store">
 	<div id="banner">
+		 <!-- START:i18n -->
+	  <% form_tag '', :method => 'GET', :class => 'locale' do %>
+	    <%= select_tag 'locale', options_for_select(LANGUAGES, I18n.locale),
+	      :onchange => 'this.form.submit()' %>
+	    <%= submit_tag 'submit' %>
+	    <%= javascript_tag "$$('.locale input').each(Element.hide)" %>
+	  <% end %>
+	  <!-- END:i18n -->
+		<!-- END_HIGHLIGHT -->
 		<%= image_tag("logo.gif", :size => "50x50", :alt => "Golfap Books") %>
-		<%= @page_title || "Golfap.com Bookshelf" %>
+		<%= @page_title || I18n.t('layout.title') %>
 	</div>
 	<div id="columns">
 		<div id="side">
