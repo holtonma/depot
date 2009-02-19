@@ -32,10 +32,10 @@
 				<% end %> 
 			<% end %>
 			<ul>
-				<li><a href="/store">Home</a></li> <%# @root_url %>
-				<li><a href="/questions">Questions</a></li>
-				<li><a href="/news">News</a></li>
-				<li><a href="/contact">Contact</a></li>
+				<li><a href="/store"><%= I18n.t 'layout.side.home' %></a></li> <%# @root_url %>
+				<li><a href="/questions"><%= I18n.t 'layout.side.questions' %></a></li>
+				<li><a href="/news"><%= I18n.t 'layout.side.news' %></a></li>
+				<li><a href="/contact"><%= I18n.t 'layout.side.contact' %></a></li>
 			</ul>
 			
 			<% if session[:user_id] %>
