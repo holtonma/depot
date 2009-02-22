@@ -6,13 +6,13 @@
       <legend>Please Enter Your Details</legend>
 
       <div>
-        <%= form.label :name, "Name:" %>
+        <%= form.label :name, I18n.t('checkout.name') + ":" %>
         <%= form.text_field :name, :size => 40 %>
       </div>
 
       <div>
 
-        <%= form.label :address, "Address:" %>
+        <%= form.label :address, I18n.t('checkout.address') + ":" %>
         <%= form.text_area :address, :rows => 3, :cols => 40 %>
       </div>
 
@@ -22,11 +22,11 @@
       </div>
 
       <div>
-        <%= form.label :pay_type, "Pay with:" %>
+        <%= form.label :pay_type, I18n.t('checkout.pay_type') + ":" %>
         <%=
           form.select :pay_type,
                        Order::PAYMENT_TYPES, 
-                      :prompt => "Select a payment method"
+                      :prompt => I18n.t('checkout.pay_prompt')
         %>
       </div>
     

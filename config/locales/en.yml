@@ -23,3 +23,15 @@ en:
       title: "Golfap Books Catalog" 
       button: 
       add: "Add to Cart"
+  checkout:
+    legend:      "Please Enter your Details"
+    name:        "Name"
+    address:     "Address"
+    email:       "E-mail"
+    pay_type:    "Pay with"
+    pay_prompt:  "Select a payment method"
+    submit:      "Place Order"
+  flash:
+    thanks:      "Thank you for your order"
+
+     
