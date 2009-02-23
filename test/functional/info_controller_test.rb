@@ -71,8 +71,6 @@ class InfoControllerTest < ActionController::TestCase
     assert_equal assigns(:product)[:price], doc['product']['price']
     assert_equal assigns(:product)[:title], doc['product']['title']
     assert_equal 1, assigns(:orders).length
-    #assert_equal assigns(:orders)[1], doc['product']['orders']
-    #assert_equal assigns(:orders)[1][:order], doc['product']['orders']['order']
     assert_equal assigns(:orders).first[:id], doc['product']['orders'].first['id']
     assert_equal assigns(:orders).first[:pay_type], doc['product']['orders'].first['pay_type']
     assert_equal assigns(:orders).first[:address], doc['product']['orders'].first['address']
