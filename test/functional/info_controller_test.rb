@@ -95,7 +95,87 @@ class InfoControllerTest < ActionController::TestCase
   end
   
   test "testing that .atom format does something useful" do
+    get :who_bought, :id => products(:one).id, :format => "atom"
+    assert_response :success
     
+    doc = Nokogiri::XML(@response.body)
+    
+    #puts doc.xpath('feed[:id]')
+    #puts doc.xpath('/feed[:id]')
+    assert_match /<title>Who bought #{assigns(:product)[:title]}<\/title>/, @response.body
+    assert_match /#{assigns(:product)[:email]}/, @response.body
+    assert_match /<title>Order #{assigns(:orders).first[:id]}<\/title>/, @response.body
+    
+    #assert_select "div.price-line", :child => /<span class="price">\$\d<\/span>/
+    css_select("feed > entry").each do |el|
+      assert_tag :tag => "id"
+      assert_tag :tag => "published"
+      assert_tag :tag => "link", :attributes => { :rel => "alternate" } 
+      assert_tag :tag => "summary"
+    end
+    
+    assert_select "title", :count => 2
+    assert_select "published", :count => 1
+    assert_select "updated", :count => 2
+    assert_select "summary", :count => 1
+    assert_select "name", :count => 1
+    assert_select "email", :count => 1
+    
+    assert_select("table").each do |tr|
+      assert_select "th", :count => 5
+      assert_select "tr", :count => 3
+      assert_select "td", :count => 3
+    end
+    
+    assert_select("author").each do |el|
+      assert_select "name", :count => 1
+      assert_select "email", :count => 1
+    end
+    
+    
+    #puts @response.body
+    #assert_equal 1, doc.xpath('/product').length
+    # <?xml version="1.0" encoding="UTF-8"?>
+    #     <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
+    #       <id>tag:test.host,2005:/info/who_bought/953125641</id>
+    #       <link rel="alternate" type="text/html" href="http://test.host"/>
+    #       <link rel="self" type="application/atom+xml" href="http://test.host/info/who_bought/953125641.atom"/>
+    #       <title>Who bought Golf My Way</title>
+    #       <updated>2009-02-23T01:48:51Z</updated>
+    #       <entry>
+    #         <id>tag:test.host,2005:Order/953125641</id>
+    #         <published>2009-02-23T01:48:51Z</published>
+    #         <updated>2009-02-23T01:48:51Z</updated>
+    #         <link rel="alternate" type="text/html" href="http://test.host/orders/953125641"/>
+    #         <title>Order 953125641</title>
+    #         <summary type="xhtml">
+    #           <div xmlns="http://www.w3.org/1999/xhtml">
+    #             <p>Shipped to 335 Nora Ave</p>
+    #             <table>
+    #               <tr>
+    #                 <th>Product</th>
+    #                 <th>Quantity</th>
+    #                 <th>Total Price</th>
+    #               </tr>
+    #               <tr>
+    #                 <td>Golf My Way</td>
+    #                 <td>1</td>
+    #                 <td>$45.67</td>
+    #               </tr>
+    #               <tr>
+    #                 <th colspan="2">total</th>
+    #                 <th>$45.67</th>
+    #               </tr>
+    #             </table>
+    #             <p>Paid by cc</p>
+    #           </div>
+    #         </summary>
+    #         <author>
+    #           <name>Holton</name>
+    #           <email>holtonma@gmail.com</email>
+    #         </author>
+    #       </entry>
+    #     </feed>
   end
   
   
