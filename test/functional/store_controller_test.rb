@@ -3,10 +3,7 @@ require 'test_helper'
 class StoreControllerTest < ActionController::TestCase
   
   LOCALES_DIRECTORY = "#{RAILS_ROOT}/config/locales"
-  ESD = YAML.load_file("#{LOCALES_DIRECTORY}/es.yml")['es']
-  # test "add_to_cart adds a product to the cart" do
-  #   # moved into items_controller_test -- 'posting to cart_items adds a product to the cart'
-  # end
+  ESD = YAML.load_file("#{LOCALES_DIRECTORY}/es.yml")['es'] #Spanish dictionary constant
   
   test "session contains cart" do
     get :index
@@ -80,8 +77,6 @@ class StoreControllerTest < ActionController::TestCase
     get :index, :locale => "es"
     assert_response :success
     
-    dictionary = ESD #YAML.load_file("#{LOCALES_DIRECTORY}/es.yml")['es'] #
-    
     assert_match ESD['layout']['side']['home'], @response.body
     assert_match ESD['layout']['side']['questions'], @response.body
     assert_match ESD['layout']['side']['news'], @response.body
@@ -94,15 +89,13 @@ class StoreControllerTest < ActionController::TestCase
     @request.session[:cart].add_product(products(:one))
     get :checkout, :locale => "es"
     assert_response :success
-    
-    dictionary = ESD
         
-    assert_match dictionary['checkout']['legend'], @response.body
-    assert_match dictionary['checkout']['name'], @response.body
-    assert_match dictionary['checkout']['address'], @response.body
-    assert_match dictionary['checkout']['pay_type'], @response.body
-    assert_match dictionary['checkout']['pay_prompt'], @response.body
-    assert_match dictionary['checkout']['submit'], @response.body
+    assert_match ESD['checkout']['legend'], @response.body
+    assert_match ESD['checkout']['name'], @response.body
+    assert_match ESD['checkout']['address'], @response.body
+    assert_match ESD['checkout']['pay_type'], @response.body
+    assert_match ESD['checkout']['pay_prompt'], @response.body
+    assert_match ESD['checkout']['submit'], @response.body
     
    
   end
