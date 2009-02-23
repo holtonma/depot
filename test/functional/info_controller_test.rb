@@ -93,4 +93,20 @@ class InfoControllerTest < ActionController::TestCase
     #      "created_at"=>Mon Feb 23 01:05:14 UTC 2009}>
      
   end
+  
+  test "who uses html anymore" do
+    def test_html_response
+      get :who_bought, :id => products(:one).id
+
+      assert_select "div#main" do
+        assert_select "ul" do
+          assert_select "li" do
+            assert_select "a", "Holton"
+            assert_select "a", "asdf"
+          end
+        end
+      end
+    end
+  end
+  
 end
