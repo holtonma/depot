@@ -5,9 +5,7 @@ class InfoControllerTest < ActionController::TestCase
   
   test "who_bought can return XML with proper data content and defined hierarchy" do
     get :who_bought, :id => products(:one).id, :format => 'xml'
-    #product = assigns(:product)
-    #orders = assigns(:orders)
-
+    
     assert_response :success
     
     #data content
