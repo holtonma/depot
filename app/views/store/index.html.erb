@@ -8,7 +8,7 @@
 		<div class="price-line">
 			<span class="price"><%= pennies_to_dollars(product.price) %></span>
 			<span>
-				<%= button_to "Add to Cart", :action => 'create', :controller => 'items', 
+				<%= button_to I18n.t('layout.main.add'), :action => 'create', :controller => 'items', 
 						:cart_id => @cart_id, :id => product.id  %>
 			</span>
 		</div>

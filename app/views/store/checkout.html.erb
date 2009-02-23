@@ -3,7 +3,7 @@
   
   <% form_for :order, :url => { :action => :save_order } do |form| %>
     <fieldset>
-      <legend>Please Enter Your Details</legend>
+      <legend><%= I18n.t('checkout.legend') %></legend>
 
       <div>
         <%= form.label :name, I18n.t('checkout.name') + ":" %>
@@ -30,7 +30,7 @@
         %>
       </div>
     
-      <%= submit_tag "Place Order", :class => "submit" %>
+      <%= submit_tag I18n.t('checkout.submit'), :class => "submit" %>
     </fieldset>
   <% end %>  
 </div>
