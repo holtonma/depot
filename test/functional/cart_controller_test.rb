@@ -23,7 +23,6 @@ class CartControllerTest < ActionController::TestCase
     end
     assert_select "h2", :count => 1, :text => /Your Golfap Books Cart/
     #assert_tag :tag => 'submit'
-    
   end
   
   test "the cart should show items and prices and quantities if there are items in the cart" do
