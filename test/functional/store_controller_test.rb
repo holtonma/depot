@@ -2,6 +2,7 @@ require 'test_helper'
 
 class StoreControllerTest < ActionController::TestCase
   
+  LOCALES_DIRECTORY = "#{RAILS_ROOT}/config/locales"
   # test "add_to_cart adds a product to the cart" do
   #   # moved into items_controller_test -- 'posting to cart_items adds a product to the cart'
   # end
@@ -60,5 +61,36 @@ class StoreControllerTest < ActionController::TestCase
     #assert_redirected_to '/store/save_order' #save_order_path(assigns(:post))
     #assert_equal 'Thank you for your order', flash[:notice]
   end
+  
+  test "locale stored in session" do
+    get :index, :locale => "es"
+    assert_response :success
+    assert_equal "es", @response.session[:locale]
+  end
+
+  test "somehow a language selected that isn't supported" do
+    get :index, :locale => "jp"
+    assert_response :success
+    assert_equal "en", @response.session[:locale]
+    assert_equal "jp translation not available", @response.flash[:notice]
+  end
+
+  test "display sidebar links in Spanish when Spanish is selected" do
+    get :index, :locale => "es"
+    assert_response :success
+    
+    dictionary = YAML.load_file("#{LOCALES_DIRECTORY}/es.yml")['es']
+    
+    assert_match dictionary['layout']['side']['home'], @response.body
+    assert_match dictionary['layout']['side']['questions'], @response.body
+    assert_match dictionary['layout']['side']['news'], @response.body
+    assert_match dictionary['layout']['side']['contact'], @response.body
+    assert_match dictionary['layout']['title'], @response.body
+  end
+  
+  test "display cart in Spanish if there are items in the cart and Spanish is selected" do
+  
+  end
+  
     
 end
