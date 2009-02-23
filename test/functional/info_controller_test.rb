@@ -94,16 +94,18 @@ class InfoControllerTest < ActionController::TestCase
      
   end
   
-  test "who uses html anymore" do
-    def test_html_response
-      get :who_bought, :id => products(:one).id
+  test "testing that .atom format does something useful" do
+    
+  end
+  
+  
+  test "html ho hum boring renders html with list and links" do
+    get :who_bought, :id => products(:one).id
 
-      assert_select "div#main" do
-        assert_select "ul" do
-          assert_select "li" do
-            assert_select "a", "Holton"
-            assert_select "a", "asdf"
-          end
+    assert_select "div#main" do
+      assert_select "ul" do
+        assert_select "li" do
+          assert_select "a", "Holton"
         end
       end
     end
